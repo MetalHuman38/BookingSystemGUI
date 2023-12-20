@@ -1,0 +1,232 @@
+﻿<Window x:Class="BookingSystem.MVVM.View.UserLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
+        xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel" 
+        xmlns:customControls="clr-namespace:BookingSystem.CustomControls"
+        mc:Ignorable="d"
+        Title="UserLogin" 
+        Height="550" 
+        Width="800"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        AllowsTransparency="True"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        Background="Transparent"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        >
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </Window.Resources>
+
+    <Window.Visibility>
+        <Binding Path="IsViewVisible"
+                 Mode="TwoWay"
+                 Converter="{StaticResource BooleanToVisibility}"/>
+    </Window.Visibility>
+
+    <Border CornerRadius="30">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/illustrated.png"/>
+        </Border.Background>
+        <Border CornerRadius="5"
+                BorderThickness="4"
+                Opacity="0.85">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#660000" Offset="0"/>
+                    <GradientStop Color="#5f0f50" Offset="0.75"/>
+                    <GradientStop Color="#ff3000" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#181448" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="LOG IN"
+                               Foreground="#99f0ff"
+                               FontSize="10"
+                               FontFamily="{StaticResource MaterialDesignFont}"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+                    <materialDesign:PackIcon Kind='WindowMinimize'
+                                BorderThickness="0"
+                                FontSize="16"
+                                Cursor="Hand"
+                                Grid.Column="1"
+                                PreviewMouseLeftButtonDown="PackIcon_WindowMinimize_Click"
+                                Style="{StaticResource MinimizePackIconStyle}"/>
+                    <materialDesign:PackIcon Kind='Close'
+                                BorderThickness="0"
+                                FontSize="16"
+                                Cursor="Hand"
+                                Grid.Column="2"
+                                PreviewMouseLeftButtonDown="PackIcon_CloseWindow_Click"
+                                Style="{StaticResource ClosePackIconStyle}"/>
+
+                </Grid>
+
+                <StackPanel Width="250"
+                            Grid.Row="2"
+                            Orientation="Vertical"
+                            Margin="0, 35,0,0">
+                    <Image Source="/Images/Logof.png"
+                           Width="100"
+                           Height="100"/>
+                    <TextBlock Text="SPAREBNB"
+                               Foreground="White"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Stay, Relax, Enjoy – Your Accommodation, Your Experience."
+                               Foreground="LightGray"
+                               FontSize="12"
+                               FontWeight="Normal"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Margin="0,5,0,0"/>
+                    
+                    <TextBlock Text="Username"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Normal"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               Margin="0,25,0,0"/>
+                    <Border Background="Transparent"
+                            BorderBrush="DarkGray"
+                            BorderThickness="2,2,2,2"
+                            CornerRadius="5"
+                            Margin="0,5,0,0"
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Column for the icon -->
+                                <ColumnDefinition Width="*" />
+                                <!-- Column for the TextBox -->
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="Account"
+                                 VerticalAlignment="Center"
+                                 Margin="5,0,5,0"
+                                 Foreground="AntiqueWhite" />
+
+                            <TextBox x:Name="txtUSer"
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="{DynamicResource MaterialDesignFont}"
+                             Background="Transparent"
+                             Foreground="AntiqueWhite"
+                             CaretBrush="AntiqueWhite"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,1"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="5,0,0,0"
+                             Padding="20,0,0,0">
+                            </TextBox>
+                        </Grid>
+                    </Border>
+                   
+                    <TextBlock Text="Password"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Normal"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               Margin="0,25,0,0"
+                               />
+                    <Grid>
+                        <customControls:BindablePasswordBox 
+                                         Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Height="38"
+                                         Margin="0,5,0,0"
+                                         >
+                        </customControls:BindablePasswordBox>
+                    </Grid>
+                    <TextBlock Text="{Binding ErrorMessage}"
+                               Foreground="#660000"
+                               FontSize="12"
+                               FontWeight="Normal"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               Margin="0,10,0,0"
+                               TextWrapping="Wrap"/>
+                    
+                        <Grid>
+                        <Button Content="LOG IN" 
+                                Command="{Binding LoginCommand}"
+                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                Margin="0,30,0,0"
+                                FontWeight="Bold"
+                                Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                     CornerRadius="20"
+                                     >
+                                        <StackPanel Orientation="Horizontal" 
+                                             HorizontalAlignment="Center" 
+                                             VerticalAlignment="Center">
+                                            <materialDesign:PackIcon Kind="Check" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{TemplateBinding Content}" />
+                                        </StackPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0">
+                    <TextBlock Text="Forgot Password?"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Normal"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               />
+                    <TextBlock Text="Reset"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="{DynamicResource MaterialDesignFont}"
+                               Margin="8,0,0,0"
+                               Cursor="Hand"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
