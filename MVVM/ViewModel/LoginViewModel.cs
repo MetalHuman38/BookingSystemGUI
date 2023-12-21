@@ -1,5 +1,9 @@
 ﻿using BookingSystem.Core;
+using BookingSystem.MVVM.Model;
+using BookingSystem.Repositories;
+using System.Net;
 using System.Security;
+using System.Security.Principal;
 using System.Windows.Input;
 
 namespace BookingSystem.MVVM.ViewModel
@@ -11,14 +15,27 @@ namespace BookingSystem.MVVM.ViewModel
         private string _errorMessage;
         private bool _isViewVisible = true;
 
+        private IUserRepository userRepository;
+
         public string Username
         {
-            get { return _username; }
-            set { _username = value; OnPropertyChanged(nameof(Username)); }
+            get
+            {
+                return _username;
+            }
+
+            set
+            {
+                _username = value;
+                OnPropertyChanged(nameof(Username));
+            }
         }
         public SecureString Password
         {
-            get => _password;
+            get
+            {
+                return _password;
+            }
             set
             {
                 _password = value;
@@ -36,7 +53,11 @@ namespace BookingSystem.MVVM.ViewModel
         }
         public bool IsViewVisible
         {
-            get => _isViewVisible;
+            get
+            {
+                return _isViewVisible;
+            }
+
             set
             {
                 _isViewVisible = value;
@@ -48,11 +69,11 @@ namespace BookingSystem.MVVM.ViewModel
         public ICommand LoginCommand { get; }
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
-        public ICommand RememberPasswordLoginCommand { get; }
+        public ICommand RememberPasswordCommand { get; }
 
         public LoginViewModel()
         {
-
+            userRepository = new UserRepository();
             LoginCommand = new RelayCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassword("", ""));
 
@@ -67,7 +88,18 @@ namespace BookingSystem.MVVM.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            throw new NotImplementedException();
+            var isValidUser = userRepository.AuthenticateUser(new NetworkCredential(Username, Password));
+            if (isValidUser)
+            {
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
+                IsViewVisible = false;
+
+            }
+            else
+            {
+                ErrorMessage = "* Invalid username or password";
+
+            }
         }
 
         private void ExecuteRecoverPassword(string username, string email)

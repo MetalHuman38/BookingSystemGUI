@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:BookingSystem"
+        xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel"
         xmlns:prism="http://www.codeplex.com/prism" 
         xmlns:core="clr-namespace:BookingSystem.Core" d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
         prism:ViewModelLocator.AutoWireViewModel="True"
@@ -22,16 +23,19 @@
         Background="{DynamicResource MaterialDesignPaper}"
         >
 
-    <materialDesign:Card UniformCornerRadius="5" 
-     Background="{DynamicResource MaterialDesignBackground}"
-     materialDesign:ShadowAssist.ShadowDepth="Depth4" Margin="5">
-
-        <Border Background="#272537">
-         
-         
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
 
 
-        </Border>
-    </materialDesign:Card>
+    <Grid>
+
+        <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
+                       FontSize="12" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+    </Grid>
+
+
 
 </Window>
