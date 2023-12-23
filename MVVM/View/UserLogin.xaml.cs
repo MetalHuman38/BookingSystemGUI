@@ -47,5 +47,12 @@ namespace BookingSystem.MVVM.View
 
 
         }
+
+        private void StartBookingButton_Click(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
     }
 }

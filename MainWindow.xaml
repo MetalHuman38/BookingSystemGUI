@@ -11,8 +11,8 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="600" 
-        Width="1100" 
+        Height="700" 
+        Width="1300" 
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
@@ -20,22 +20,31 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Background="{DynamicResource MaterialDesignPaper}"
+        
         >
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
+    <Border CornerRadius="0,0,0,0"
+        Grid.Column="0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="0"/>
+            </LinearGradientBrush>
+        </Border.Background>
 
-    <Grid>
+        <Grid>
 
-        <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
-                       FontSize="12" 
+            <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
+                       FontSize="22" 
+                       FontWeight="Bold"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
-    </Grid>
-
-
+                       VerticalAlignment="Center"
+                       Foreground="{StaticResource color1}"/>
+        </Grid>
+    </Border>
 
 </Window>

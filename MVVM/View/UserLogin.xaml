@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
-        xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel" 
-        xmlns:customControls="clr-namespace:BookingSystem.CustomControls"
+        xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel"
+        xmlns:customControls="clr-namespace:BookingSystem.CustomControls" 
+        xmlns:core="clr-namespace:BookingSystem.Core"
         mc:Ignorable="d"
         Title="UserLogin" 
         Height="550" 
@@ -24,7 +25,7 @@
     <Window.DataContext>
         <viewModel:LoginViewModel/>
     </Window.DataContext>
-    
+
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </Window.Resources>
@@ -70,13 +71,23 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="LOG IN"
+                    <Button Content="START BOOKING"
                                Foreground="#99f0ff"
-                               FontSize="10"
+                               FontSize="12"
                                FontFamily="{StaticResource MaterialDesignFont}"
+                               FontWeight="SemiBold"
                                Grid.Column="0"
                                VerticalAlignment="Center"
-                               Margin="10,0,0,0"/>
+                               Margin="15,0,0,0"
+                               Background="Transparent"
+                               BorderBrush="Transparent"
+                               BorderThickness="0"
+                               Width="130"
+                               HorizontalAlignment="left"
+                               HorizontalContentAlignment="left"
+                               Click="StartBookingButton_Click"
+                               Command="{Binding StartBookingCommand}"/>
+                    
                     <materialDesign:PackIcon Kind='WindowMinimize'
                                 BorderThickness="0"
                                 FontSize="16"

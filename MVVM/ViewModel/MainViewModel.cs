@@ -47,5 +47,6 @@ namespace BookingSystem.MVVM.ViewModel
                 //Hide child views.
             }
         }
+
     }
 }

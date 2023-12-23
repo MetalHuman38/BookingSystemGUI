@@ -19,6 +19,7 @@ namespace BookingSystem
 
         }
 
+        // Common logic for handling view startup
         protected void ApplicationStart(object sender, StartupEventArgs e)
         {
             UserLogin loginView = new UserLogin();
@@ -34,10 +35,12 @@ namespace BookingSystem
             };
         }
 
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register your types and dependencies here
             containerRegistry.RegisterForNavigation<UserLogin>();
+            containerRegistry.RegisterForNavigation<StartBookingPage>();
             containerRegistry.RegisterForNavigation<MainWindow>();
         }
 

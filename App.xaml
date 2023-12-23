@@ -9,6 +9,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/UIColors.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -33,10 +35,10 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                 <Setter Property="Background" Value="#5f0f50"/>
-                </Trigger>
-            </Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#5f0f50"/>
+                    </Trigger>
+                </Style.Triggers>
                 <!-- Add more setters as needed -->
             </Style>
             <!-- Style for the Close icon -->

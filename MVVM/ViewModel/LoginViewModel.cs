@@ -1,5 +1,6 @@
 ﻿using BookingSystem.Core;
 using BookingSystem.MVVM.Model;
+using BookingSystem.MVVM.View;
 using BookingSystem.Repositories;
 using System.Net;
 using System.Security;
@@ -16,6 +17,7 @@ namespace BookingSystem.MVVM.ViewModel
         private bool _isViewVisible = true;
 
         private IUserRepository userRepository;
+
 
         public string Username
         {
@@ -67,14 +69,20 @@ namespace BookingSystem.MVVM.ViewModel
 
         // Commands
         public ICommand LoginCommand { get; }
+        public ICommand StartBookingCommand { get; }
         public ICommand RecoverPasswordCommand { get; }
         public ICommand ShowPasswordCommand { get; }
         public ICommand RememberPasswordCommand { get; }
+
+
+
+
 
         public LoginViewModel()
         {
             userRepository = new UserRepository();
             LoginCommand = new RelayCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            StartBookingCommand = new RelayCommand(ExecuteStartBookingCommand);
             RecoverPasswordCommand = new RelayCommand(p => ExecuteRecoverPassword("", ""));
 
         }
@@ -94,6 +102,7 @@ namespace BookingSystem.MVVM.ViewModel
                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                 IsViewVisible = false;
 
+
             }
             else
             {
@@ -106,5 +115,14 @@ namespace BookingSystem.MVVM.ViewModel
         {
             throw new NotImplementedException();
         }
+
+        private void ExecuteStartBookingCommand(object obj)
+        {
+            // Open the StartBookingPage.xaml window
+            StartBookingPage startBookingPage = new StartBookingPage();
+            startBookingPage.Show();
+        }
+
+
     }
 }
