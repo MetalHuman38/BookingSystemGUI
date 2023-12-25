@@ -43,8 +43,11 @@ namespace BookingSystem.MVVM.ViewModel
             }
             else
             {
-                CurrentUserAccount.DisplayName = "Invalid user, not logged in";
-                //Hide child views.
+                CurrentUserAccount = new UserAccountModel // Ensure CurrentUserAccount is initialized
+                {
+                    DisplayName = "Invalid user, not logged in"
+                };
+                // Hide child views.
             }
         }
 

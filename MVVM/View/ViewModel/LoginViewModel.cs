@@ -18,6 +18,8 @@ namespace BookingSystem.MVVM.ViewModel
 
         private IUserRepository userRepository;
 
+        private StartBookingPageViewModel startBookingPageViewModel;
+
 
         public string Username
         {
@@ -102,11 +104,20 @@ namespace BookingSystem.MVVM.ViewModel
                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                 IsViewVisible = false;
 
+                if (!isValidUser)
+                {
+                    startBookingPageViewModel.IsUserSignedIn = true;
+                }
 
             }
             else
             {
                 ErrorMessage = "* Invalid username or password";
+                if (startBookingPageViewModel != null)
+                {
+                    // Set the property in StartBookingPageViewModel
+                    startBookingPageViewModel.IsUserSignedIn = false;
+                }
 
             }
         }

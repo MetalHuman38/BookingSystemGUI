@@ -9,11 +9,13 @@
         xmlns:prism="http://www.codeplex.com/prism" 
         xmlns:core="clr-namespace:BookingSystem.Core" d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="700" 
         Width="1300" 
         WindowStyle="None"
+        MouseDown="Window_MouseDown"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -27,8 +29,7 @@
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
-    <Border CornerRadius="0,0,0,0"
-        Grid.Column="0">
+    <Border CornerRadius="5" BorderThickness="1">
         <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
                 <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
@@ -37,14 +38,93 @@
         </Border.Background>
 
         <Grid>
+            <Grid.ColumnDefinitions>
+                <!-- Logo and Text Column -->
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
-                       FontSize="22" 
-                       FontWeight="Bold"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Foreground="{StaticResource color1}"/>
+            <Border Grid.Column="0">
+                <!-- Logo and Text -->
+                <StackPanel Orientation="Horizontal"
+                    Margin="15,0,0,0"
+                    Height="35" 
+                    VerticalAlignment="Top">
+                    <Image Source="/Images/Logof.png" 
+                    Height="30"/>
+                    <TextBlock Text="SPAREBNB"
+                   Foreground="{StaticResource titleColor2}"
+                   FontSize="20"
+                   FontWeight="Medium"
+                   VerticalAlignment="Center"
+                   Margin="15,0,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!-- Control bar -->
+                        <RowDefinition Height="35"/>
+                        <!--User DisplayName-->
+                        <RowDefinition Height="35"/>
+                        <!--Content Section/ Child views-->
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Control Bar-->
+                    <StackPanel x:Name="pnlControlbar" 
+                              Grid.Row="0" 
+                              Orientation="Horizontal" 
+                              FlowDirection="RightToLeft" 
+                              Background="Transparent" 
+                              Margin="0,0,5,0">
+                        <Button x:Name="btnClose"
+                             Style="{StaticResource controlButton}"
+                             Tag="{StaticResource color4}"
+                             Click="btnClose_Click">
+                            <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                        <Button x:Name="btnMaximize"
+                       Style="{StaticResource controlButton}"
+                       Tag="{StaticResource color6}"
+                       Click="BtnMaximize_Click">
+                            <fa:IconImage Icon="Square" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                        <Button x:Name="btnMinimize"
+                            Style="{StaticResource controlButton}"
+                            Tag="{StaticResource color6}"
+                            Click="BtnMinimize_Click">
+                            <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+                    </StackPanel>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!-- Welcome user (if needed) -->
+                        <StackPanel Grid.Column="1"
+                      Orientation="Horizontal"
+                      FlowDirection="RightToLeft"
+                      VerticalAlignment="Center"
+                      Margin="0,0,10,0">
+                            <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
+                      FontSize="14"
+                      FontWeight="Bold"
+                      Margin="15,0,10,0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                     Foreground="{StaticResource color1}"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
         </Grid>
-    </Border>
 
+    </Border>
 </Window>

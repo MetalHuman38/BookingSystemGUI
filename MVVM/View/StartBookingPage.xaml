@@ -17,7 +17,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-         MouseDown="Window_MouseDown"
+        MouseDown="Window_MouseDown"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
@@ -46,6 +46,7 @@
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            
             <Border CornerRadius="10,0,0,10"
                     Grid.Column="0">
                 <Border.Background>
@@ -79,7 +80,7 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color3}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Hotel" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Accommodations" Style="{StaticResource menuButtonText}"/>
@@ -87,14 +88,14 @@
                     </RadioButton>
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                  Tag="{StaticResource color1}">
+                                  Tag="{StaticResource color6}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Plus" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Add Booking" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color9}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Edit" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Manage Booking" Style="{StaticResource menuButtonText}"/>
@@ -108,14 +109,14 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color10}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
+                            <fa:IconImage Icon="UserGroup" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="User Account" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color5}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="CreditCard" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Payment/Invoice" Style="{StaticResource menuButtonText}"/>
@@ -129,7 +130,7 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color4}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color9}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Log Out" Style="{StaticResource menuButtonText}"/>
@@ -140,15 +141,128 @@
            
             </Border>
                 
-                <!--DashBoard-->
+                <!--Main Section-->
             <Border CornerRadius="0,10,10,0"
-        Grid.Column="1">
+                    Grid.Column="1">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
                         <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
                         <GradientStop Color="{StaticResource primaryBackColor2}" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--control bar-->
+                        <RowDefinition Height="25"/>
+                        <!--Header/Caption-->
+                        <RowDefinition Height="35"/>
+                        <!--Content Section/ Child views-->
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--control bar-->
+                    <StackPanel x:Name="pnlControlbar"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
+                                MouseEnter="pnlControlBar_MouseEnter">
+
+                        <Button x:Name="btnClose"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color4}"
+                                Click="btnClose_Click">
+                            <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+
+                        </Button>
+
+                        <Button x:Name="btnMaximize"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color6}"
+                                Click="BtnMaximize_Click">
+                            <fa:IconImage Icon="Square" Style="{StaticResource controlButtonIcon}"/>
+
+                        </Button>
+
+                        <Button x:Name="btnMinimize"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color6}"
+                                Click="BtnMinimize_Click">
+                            <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+                    </StackPanel>
+                    
+                    <!--Header/caption-->
+
+                    <Grid Grid.Row="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--Caption-->
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    >
+                            <fa:IconImage Icon="Home"
+                                          Height="20"
+                                          Width="20"
+                                          Foreground="{StaticResource titleColor2}"
+                                          Margin="35,0,10,0"/>
+
+                            <TextBlock Text="WanderLust days"
+                                             FontSize="28"
+                                             TextWrapping="Wrap"
+                                             TextAlignment="Center"
+                                             Foreground="{StaticResource titleColor2}"
+                                             FontWeight="Medium"
+                                             VerticalAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <!--User Option-->
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,10,0">
+
+                            <Button Style="{StaticResource IconButton}"
+                                    Tag="{StaticResource color1}">
+                                <fa:IconImage Icon="AngleDown" Style="{StaticResource IconButtonIcon}"/>
+                            </Button>
+
+                            <TextBlock Foreground="{StaticResource titleColor3}"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{materialDesign:MaterialDesignFont}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsUserSignedIn}" Value="True">
+                                                <Setter Property="Text" Value="{Binding CurrentUserAccount.Displayname}" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsUserSignedIn}" Value="False">
+                                                <Setter Property="Text" Value="User not signed in" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+
+
+
+
+                    </Grid>
+
+                </Grid>
+                
+                
+                
             </Border>
         </Grid>
         
