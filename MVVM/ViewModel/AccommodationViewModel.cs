@@ -1,10 +1,14 @@
 ﻿using BookingSystem.BookingSystemClasses;
 using BookingSystem.Core;
 using BookingSystem.MVVM.Model;
+using BookingSystem.MVVM.View;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+
 
 namespace BookingSystem.MVVM.ViewModel
 {
+
 
     public class AccommodationViewModel : ObservableObject
     {
@@ -64,6 +68,26 @@ namespace BookingSystem.MVVM.ViewModel
             Accommodations.Add(twoBedRoom);
             Accommodations.Add(threeBedRoom);
 
+        }
+
+        private ICommand _bookCommand;
+
+        public ICommand BookCommand
+        {
+            get
+            {
+                _bookCommand ??= new RelayCommand(async _ => await ExecuteBookCommand());
+                return _bookCommand;
+            }
+        }
+
+        private async Task ExecuteBookCommand()
+        {
+            await Task.Delay(1000);
+
+            // Open the StartBookingPage.xaml window
+            AddBooking addBooking = new AddBooking();
+            addBooking.Show();
         }
 
     }

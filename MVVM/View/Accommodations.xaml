@@ -12,7 +12,7 @@
         xmlns:local="clr-namespace:BookingSystem.MVVM.View"
         mc:Ignorable="d"
         Title="Accommodations" 
-        Height="900" 
+        Height="700" 
         Width="1300"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"

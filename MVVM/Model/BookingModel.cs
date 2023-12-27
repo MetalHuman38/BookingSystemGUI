@@ -2,6 +2,7 @@
 {
     public class BookingModel
     {
+        public int UserId { get; set; }
         public int BookingId { get; set; }
         public string GuestName { get; set; }
         public string AccommodationType { get; set; }

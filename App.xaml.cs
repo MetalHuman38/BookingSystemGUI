@@ -41,6 +41,7 @@ namespace BookingSystem
             // Register your types and dependencies here
             containerRegistry.RegisterForNavigation<UserLogin>();
             containerRegistry.RegisterForNavigation<StartBookingPage>();
+            containerRegistry.RegisterForNavigation<Accommodations>();
             containerRegistry.RegisterForNavigation<MainWindow>();
         }
 
