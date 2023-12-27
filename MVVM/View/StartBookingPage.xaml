@@ -8,7 +8,8 @@
         xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel"
         xmlns:prism="http://www.codeplex.com/prism" 
         prism:ViewModelLocator.AutoWireViewModel="True"
-        xmlns:core="clr-namespace:BookingSystem.Core" d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
+        xmlns:core="clr-namespace:BookingSystem.Core"
+        d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="StartBookingPage" 
@@ -80,7 +81,7 @@
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color3}">
+                    <RadioButton Style="{StaticResource menuButton}" Tag="{StaticResource color3}" Command="{Binding AccommodationsCommand}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Hotel" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Accommodations" Style="{StaticResource menuButtonText}"/>
@@ -255,7 +256,10 @@
                         </StackPanel>
 
 
-
+                        <!--Content Section/ Child views-->
+                        <ContentControl Content=""
+                                        Grid.Row="2"
+                                        Margin="25"/>
 
                     </Grid>
 

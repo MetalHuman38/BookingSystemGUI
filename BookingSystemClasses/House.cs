@@ -1,9 +1,11 @@
-﻿namespace BookingSystem
+﻿using BookingSystem.MVVM.Model;
+
+namespace BookingSystem.BookingSystemClasses
 {
     /// <summary>
     /// Represents a House as a type of accommodation.
     /// </summary>
-    public class House : AccommodationBaseClass
+    public class House : AccommodationBaseClass, IAccommodation
     {
         /// <summary>
         /// Constructor for creating a new House.
@@ -16,7 +18,7 @@
         public override void Print()
         {
             // Prints the details including specific amenities
-
+            //Console.WriteLine($"- Accommodation Type: {GetType().Name}");
             base.Print();
         }
 
@@ -37,6 +39,7 @@
             public override void Print()
             {
                 // Prints the details including specific amenities
+                Console.WriteLine($"- Accommodation Type: {GetType().Name}");
                 base.Print();
             }
         }
@@ -57,6 +60,7 @@
             public override void Print()
             {
                 // Prints the details including specific amenities
+                Console.WriteLine($"- Accommodation Type: {GetType().Name}");
                 base.Print();
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace BookingSystem
+﻿using BookingSystem.BookingSystemClasses;
+
+namespace BookingSystem
 {
     /// <summary>
     /// Represents a booking in the booking system.

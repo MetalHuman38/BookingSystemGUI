@@ -1,4 +1,4 @@
-﻿namespace BookingSystem
+﻿namespace BookingSystem.BookingSystemClasses
 {
     /// <summary>
     /// Abstract base class representing a general accommodation.
@@ -13,6 +13,8 @@
         public double Price { get; set; }
 
         public List<string> Amenities { get; }
+
+        public string TypeName => GetType().Name;
 
 
         /// <summary>
@@ -33,7 +35,7 @@
         /// </summary>
         public virtual void Print()
         {
-            Console.WriteLine($"- Accommodation Type: {this.GetType().Name}");
+            Console.WriteLine($"- Accommodation Type: {GetType().Name}");
             Console.WriteLine($"- Booking ID: {BookingID}");
             Console.WriteLine("Amenities:");
             foreach (string amenity in Amenities)

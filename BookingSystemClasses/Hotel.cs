@@ -1,9 +1,11 @@
-﻿namespace BookingSystem
+﻿using BookingSystem.MVVM.Model;
+
+namespace BookingSystem.BookingSystemClasses
 {
     /// <summary>
     /// Represents a Hotel as a type of accommodation.
     /// </summary>
-    public class Hotel : AccommodationBaseClass
+    public class Hotel : AccommodationBaseClass, IAccommodation
     {
 
         /// <summary>
@@ -16,8 +18,12 @@
         {
         }
 
-        // Prints the common details of the Hotel
-        public override void Print() => base.Print();
+        public override void Print()
+        {
+            // Prints the common details of the flat
+            //Console.WriteLine($"- Accommodation Type: {GetType().Name}");
+            base.Print();
+        }
 
         public class StandardRoom : Hotel
         {
@@ -37,6 +43,7 @@
             public override void Print()
             {
                 // Prints the details including specific amenities
+                Console.WriteLine($"- Accommodation Type: {GetType().Name}");
                 base.Print();
             }
         }
@@ -60,6 +67,7 @@
             public override void Print()
             {
                 // Prints the details including specific amenities
+                Console.WriteLine($"- Accommodation Type: {GetType().Name}");
                 base.Print();
             }
         }
@@ -86,6 +94,7 @@
             public override void Print()
             {
                 // Prints the details including specific amenities
+                Console.WriteLine($"- Accommodation Type: {GetType().Name}");
                 base.Print();
             }
         }

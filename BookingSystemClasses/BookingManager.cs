@@ -1,4 +1,6 @@
-﻿namespace BookingSystem
+﻿using BookingSystem.BookingSystemClasses;
+
+namespace BookingSystem
 {
 
     /// <summary>
