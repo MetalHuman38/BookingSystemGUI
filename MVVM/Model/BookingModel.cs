@@ -2,11 +2,10 @@
 {
     public class BookingModel
     {
-        public int UserId { get; set; }
         public int BookingId { get; set; }
         public string GuestName { get; set; }
         public string AccommodationType { get; set; }
-        public DateTime BookingDate { get; set; }
+        public DateTime? BookingDate { get; set; }
         public int NumberOfNights { get; set; }
         public double TotalPrice { get; set; }
         // Other properties as needed

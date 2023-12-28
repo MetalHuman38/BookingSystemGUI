@@ -6,10 +6,10 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:local="clr-namespace:BookingSystem.MVVM.View" 
-        xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel"
+        xmlns:viewModel="clr-namespace:BookingSystem.MVVM.ViewModel" xmlns:bookingsystem="clr-namespace:BookingSystem"
         mc:Ignorable="d"
         Title="AddBooking" 
-        Height="700" 
+        Height="800" 
         Width="1300"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -23,6 +23,11 @@
     <Window.DataContext>
         <viewModel:AddBookingViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <bookingsystem:IntegerConverter x:Key="IntegerConverter" />
+    </Window.Resources>
+
 
 
     <Border CornerRadius="5"
@@ -118,23 +123,198 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal">
-                    <fa:IconImage Icon="Plus" Style="{StaticResource menuButtonIcon}"
+
+                    <StackPanel  Grid.Row="0"  Orientation="Horizontal">
+                        <fa:IconImage Icon="Plus" Style="{StaticResource menuButtonIcon}"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
                                   Margin="20,40,0,0"
                                   IconFont="Solid"
                                   Foreground="{StaticResource color7}"/>
-                    <TextBlock Text="Add Booking"
-                               FontSize="32"
-                               Margin="25,40,0,0"
-                               Foreground="{StaticResource color7}"/>
+                        <TextBlock Text="Add Booking Details"
+                                   FontSize="32"
+                                   Margin="25,40,0,0"
+                                   Foreground="{StaticResource color7}"/>
                     </StackPanel>
 
+         
+
+                    <StackPanel Grid.Row="1">
+                                <!-- Labels -->
+                            <TextBlock Grid.Row="0"
+                                  Text="Booking ID:" 
+                                  Foreground="{StaticResource color8}"
+                                  FontSize="22" 
+                                  FontWeight="Bold" 
+                                  Margin="58,20,0,5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Column for the icon -->
+                                <ColumnDefinition Width="*" />
+                                <!-- Column for the TextBox -->
+                            </Grid.ColumnDefinitions>
+                            <!-- TextBox for GuestName -->
+                            <TextBox Text="{Binding BookingId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="300" 
+                                    Height="30" 
+                                    Margin="58,0,0,10"
+                                    Background="Transparent"
+                                    Foreground="AntiqueWhite"
+                                    CaretBrush="AntiqueWhite"
+                                    BorderBrush="DarkGray"
+                                    BorderThickness="1,1,1,1"
+                                    VerticalContentAlignment="Center"/>
+                             </Grid>
+
+                               <TextBlock Grid.Row="1"
+                                          Text="Guest Name:" 
+                                          Foreground="{StaticResource color8}"
+                                          FontSize="22" 
+                                          FontWeight="Bold" 
+                                          Margin="58,20,0,5"/>
+                               <Grid>
+                                   <Grid.ColumnDefinitions>
+                                      <ColumnDefinition Width="Auto" />
+                                        <!-- Column for the icon -->
+                                       <ColumnDefinition Width="*" />
+                                        <!-- Column for the TextBox -->
+                                         </Grid.ColumnDefinitions>
+                            <!-- TextBox for GuestName -->
+                            <TextBox Text="{Binding GuestName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="300" 
+                                     Height="30" 
+                                     Margin="58,0,0,10"
+                                     Background="Transparent"
+                                     Foreground="AntiqueWhite"
+                                     CaretBrush="AntiqueWhite"
+                                     BorderBrush="DarkGray"
+                                     BorderThickness="1,1,1,1"
+                                     VerticalContentAlignment="Center"/>
+                              </Grid>
+
+                        <TextBlock Grid.Row="2"
+                                   Text="Accommodation Type:" 
+                                   Foreground="{StaticResource color8}"
+                                   FontSize="22" 
+                                   FontWeight="Bold" 
+                                   Margin="58,20,0,5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Column for the icon -->
+                                <ColumnDefinition Width="*" />
+                                <!-- Column for the TextBox -->
+                            </Grid.ColumnDefinitions>
+                            <!-- TextBox for GuestName -->
+                            <TextBox Text="{Binding AccommodationType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="300" 
+                                     Height="30" 
+                                     Margin="58,0,0,10"
+                                     Background="Transparent"
+                                     Foreground="AntiqueWhite"
+                                     CaretBrush="AntiqueWhite"
+                                     BorderBrush="DarkGray"
+                                     BorderThickness="1,1,1,1"
+                                     VerticalContentAlignment="Center"/>
+                             </Grid>
+                        <TextBlock Grid.Row="3"
+                                   Text="Booking Date:" 
+                                   Foreground="{StaticResource color8}"
+                                   FontSize="22" 
+                                   FontWeight="Bold" 
+                                   Margin="58,20,0,5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Column for the icon -->
+                                <ColumnDefinition Width="*" />
+                                <!-- Column for the TextBox -->
+                            </Grid.ColumnDefinitions>
+                            <!-- TextBox for GuestName -->
+                            <DatePicker SelectedDate="{Binding BookingDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="300" 
+                                     Height="30" 
+                                     Margin="58,0,0,10"
+                                     Background="Transparent"
+                                     Foreground="AntiqueWhite"
+                                     
+                                     BorderBrush="DarkGray"
+                                     BorderThickness="1,1,1,1"
+                                     VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <TextBlock Grid.Row="4"
+                                   Text="Numbers of Night:" 
+                                   Foreground="{StaticResource color8}"
+                                   FontSize="22" 
+                                   FontWeight="Bold" 
+                                   Margin="58,20,0,5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Column for the icon -->
+                                <ColumnDefinition Width="*" />
+                                <!-- Column for the TextBox -->
+                            </Grid.ColumnDefinitions>
+                            <!-- TextBox for GuestName -->
+                            <TextBox Text="{Binding NumberOfNights, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntegerConverter}}"
+                                     Width="300" 
+                                     Height="30" 
+                                     Margin="58,0,0,10"
+                                     Background="Transparent"
+                                     Foreground="AntiqueWhite"
+                                     CaretBrush="AntiqueWhite"
+                                     BorderBrush="DarkGray"
+                                     BorderThickness="1,1,1,1"
+                                     VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <TextBlock Grid.Row="5"
+                                   Text="Total price:" 
+                                   Foreground="{StaticResource color8}"
+                                   FontSize="22" 
+                                   FontWeight="Bold" 
+                                   Margin="58,20,0,5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Column for the icon -->
+                                <ColumnDefinition Width="*" />
+                                <!-- Column for the TextBox -->
+                            </Grid.ColumnDefinitions>
+                            <!-- TextBox for GuestName -->
+                            <TextBox Text="{Binding TotalPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="300" 
+                                     Height="30" 
+                                     Margin="58,0,0,10"
+                                     Background="Transparent"
+                                     Foreground="AntiqueWhite"
+                                     CaretBrush="AntiqueWhite"
+                                     BorderBrush="DarkGray"
+                                     BorderThickness="1,1,1,1"
+                                     VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Submit"
+                                    Foreground="{StaticResource color8}"
+                                    FontSize="22"
+                                    FontWeight="Bold"
+                                    Margin="58,20,90,5"
+                                    Command="{Binding SubmitCommand}" 
+                                    CommandParameter="{Binding GuestName}"/>
+                            <Button Content="Cancel"
+                                    Foreground="{StaticResource color8}"
+                                    FontSize="22"
+                                    FontWeight="Bold"
+                                    Margin="10,20,0,5"
+                                    Command="{Binding CancelCommand}" 
+                                />
+                        </StackPanel>
+                    </StackPanel>
+                        
+                   
                 </Grid>
 
             </Border>
-
         </Grid>
 
     </Border>
