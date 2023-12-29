@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using BookingSystem.MVVM.ViewModel;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -14,6 +15,7 @@ namespace BookingSystem
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
 
         [DllImport("user32.dll")]

@@ -111,7 +111,7 @@
                       FlowDirection="RightToLeft"
                       VerticalAlignment="Center"
                       Margin="0,0,10,0">
-                     <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
+                            <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
                       FontSize="14"
                       FontWeight="Bold"
                       Margin="15,0,10,0"
@@ -143,8 +143,26 @@
 
                         </StackPanel>
                     </Grid>
+
+                    <Grid Grid.Row="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1000"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Vertical">
+
+                            <DataGrid ItemsSource="{Binding Bookings}" 
+                                      AutoGenerateColumns="True"
+                                      Height="400"/>
+
+                        </StackPanel>
+
+                    </Grid>
                 </Grid>
             </Border>
+
         </Grid>
 
     </Border>

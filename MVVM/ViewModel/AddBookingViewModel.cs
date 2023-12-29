@@ -84,14 +84,14 @@ namespace BookingSystem.MVVM.ViewModel
             }
         }
 
-        public double TotalPrice
+        public decimal TotalPrice
         {
-            get { return _totalPrice; }
+            get { return (decimal)_totalPrice; }
             set
             {
-                if (_totalPrice != value)
+                if (_totalPrice != (double)value)
                 {
-                    _totalPrice = value;
+                    _totalPrice = (double)value;
                     OnPropertyChanged(nameof(TotalPrice));
                 }
             }

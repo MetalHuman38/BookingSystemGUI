@@ -6,12 +6,17 @@ namespace BookingSystem.Core
     {
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
-
+        private Action loadBookings;
 
         public RelayCommand(Action<object> execute)
         {
             _execute = execute;
             _canExecute = null;
+        }
+
+        public RelayCommand(Action loadBookings)
+        {
+            this.loadBookings = loadBookings;
         }
 
         public RelayCommand(

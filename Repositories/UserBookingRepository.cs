@@ -36,7 +36,37 @@ namespace BookingSystem.Repositories
 
         public IEnumerable<BookingModel> GetAllBookings()
         {
-            throw new NotImplementedException();
+            List<BookingModel> bookings = new List<BookingModel>();
+
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM [UserBooking]";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BookingModel booking = new BookingModel
+                            {
+                                BookingId = (int)reader["BookingId"],
+                                GuestName = (string)reader["GuestName"],
+                                AccommodationType = (string)reader["AccommodationType"],
+                                BookingDate = (DateTime)reader["BookingDate"],
+                                NumberOfNights = (int)reader["NumberOfNights"],
+                                TotalPrice = (decimal)reader["TotalPrice"]
+                                // Add other properties as needed
+                            };
+
+                            bookings.Add(booking);
+                        }
+                    }
+                }
+            }
+            return bookings;
         }
 
         public BookingModel GetBookingById(int bookingId)
