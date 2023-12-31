@@ -12,7 +12,8 @@ namespace BookingSystem.MVVM.ViewModel
         private string _guestName;
         private int _bookingId;
         private string _accommodationType;
-        private DateTime _bookingDate;
+        private DateTime _checkOut;
+        private DateTime _checkIN;
         private int _numbersofNights;
         private double _totalPrice;
 
@@ -58,15 +59,28 @@ namespace BookingSystem.MVVM.ViewModel
             }
         }
 
-        public DateTime BookingDate
+        public DateTime CheckIN
         {
-            get { return _bookingDate; }
+            get { return _checkIN; }
             set
             {
-                if (_bookingDate != value)
+                if (_checkIN != value)
                 {
-                    _bookingDate = value;
-                    OnPropertyChanged(nameof(BookingDate));
+                    _checkIN = value;
+                    OnPropertyChanged(nameof(CheckIN));
+                }
+            }
+        }
+
+        public DateTime CheckOut
+        {
+            get { return _checkOut; }
+            set
+            {
+                if (_checkOut != value)
+                {
+                    _checkOut = value;
+                    OnPropertyChanged(nameof(CheckOut));
                 }
             }
         }
@@ -122,7 +136,8 @@ namespace BookingSystem.MVVM.ViewModel
                     BookingId = BookingId,
                     GuestName = guestName,
                     AccommodationType = AccommodationType,
-                    BookingDate = BookingDate,
+                    CheckIN = CheckIN,
+                    CheckOut = CheckOut,
                     NumberOfNights = NumberOfNights,
                     TotalPrice = TotalPrice
                     // Add other properties as needed

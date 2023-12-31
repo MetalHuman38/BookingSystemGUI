@@ -1,4 +1,5 @@
-﻿using BookingSystem.MVVM.ViewModel;
+﻿using BookingSystem.MVVM.Model;
+using BookingSystem.MVVM.ViewModel;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -15,6 +16,18 @@ namespace BookingSystem.MVVM.View
         {
             InitializeComponent();
             DataContext = new AddBookingViewModel();
+
+
+        }
+
+
+        private readonly IAccommodation _selectedAccommodation;
+
+        public AddBooking(IAccommodation selectedAccommodation)
+        {
+            InitializeComponent();
+            _selectedAccommodation = selectedAccommodation;
+            // Additional initialization logic if needed
         }
 
         [DllImport("user32.dll")]

@@ -1,7 +1,9 @@
-﻿using BookingSystem.Core;
+﻿using BookingSystem.BookingSystemClasses;
+using BookingSystem.Core;
 using BookingSystem.MVVM.Model;
 using BookingSystem.Repositories;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace BookingSystem.MVVM.ViewModel
 {
@@ -77,6 +79,34 @@ namespace BookingSystem.MVVM.ViewModel
                 {
                     _bookings = value;
                     OnPropertyChanged(nameof(Bookings));
+                }
+            }
+        }
+
+        public ICommand BookCommand { get; set; }
+        private void ExecuteBookCommand(object parameter)
+        {
+            BookCommand = new RelayCommand(ExecuteBookCommand);
+
+            if (parameter is AccommodationBaseClass accommodation)
+            {
+                string typeName = accommodation.TypeName;
+                double price = accommodation.Price;
+                string roomType = accommodation.RoomType;
+                List<string> amenities = accommodation.Amenities;
+
+                var bookingHistory = new BookingHistory
+                {
+                    TypeName = typeName,
+                    Price = price,
+                    RoomType = roomType,
+                    Amenities = amenities
+                };
+
+                using (var dbContext = new BookingDbContext())
+                {
+                    dbContext.BookingHistories.Add(bookingHistory);
+                    dbContext.SaveChanges();
                 }
             }
         }

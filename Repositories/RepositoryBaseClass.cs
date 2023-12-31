@@ -2,7 +2,7 @@
 
 namespace BookingSystem.Repositories
 {
-    public abstract class RepositoryBaseClass
+    public class RepositoryBaseClass
     {
 
         private readonly string _connectionString;
@@ -13,6 +13,11 @@ namespace BookingSystem.Repositories
         protected SqlConnection GetConnection()
         {
             return new SqlConnection(_connectionString);
+        }
+
+        public string GetConnectionString()
+        {
+            return _connectionString;
         }
     }
 }

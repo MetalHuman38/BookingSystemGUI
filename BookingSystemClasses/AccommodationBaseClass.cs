@@ -16,6 +16,8 @@
 
         public string TypeName => GetType().Name;
 
+        public string RoomType => GetType().Name;
+
 
         /// <summary>
         /// Constructor for the accommodation class.

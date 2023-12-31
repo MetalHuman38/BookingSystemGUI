@@ -25,9 +25,9 @@ namespace BookingSystem.MVVM.ViewModel
             }
         }
 
-        public BookingViewModel()
+        public BookingViewModel(IUserBookingRepository userBookingRepository)
         {
-            userBookingRepository = new UserBookingRepository();
+            this.userBookingRepository = new UserBookingRepository();
             LoadBookings(); // Load bookings initially
             // Subscribe to events or perform any other setup logic here
         }

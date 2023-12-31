@@ -43,20 +43,116 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0">
+                
+                <Grid >
                 <!-- Logo and Text -->
-                <StackPanel Orientation="Horizontal"
+                    <StackPanel Orientation="Horizontal"
                     Margin="15,0,0,0"
                     Height="35" 
                     VerticalAlignment="Top">
-                    <Image Source="/Images/Logof.png" 
+                        <Image Source="/Images/Logof.png" 
                     Height="30"/>
-                    <TextBlock Text="SPAREBNB"
+                        <TextBlock Text="SPAREBNB"
                    Foreground="{StaticResource titleColor2}"
                    FontSize="20"
                    FontWeight="Medium"
                    VerticalAlignment="Center"
                    Margin="15,0,0,0"/>
-                </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Vertical"
+                                VerticalAlignment="Top"
+                                Margin="10,120,10,0"
+                                Height="350"
+                                Background="{StaticResource color6}">
+                        
+                        <TextBlock Text="Search"
+                                   Margin="10,5,0,0"
+                                   HorizontalAlignment="Left"
+                                   FontSize="18"/>
+                        
+                        <TextBlock Text="property name"
+                                   Margin="10,5,0,0"
+                                   HorizontalAlignment="Left"
+                                   FontSize="10"/>
+                        <Grid>
+                        <TextBox Width="160"
+                                 Height="30"
+                                 Margin="0,5,0,0"
+                                 Background="AntiqueWhite"
+                                 Padding="30,5,0,0"/>
+                        <fa:IconImage Icon="Search"
+                                      Height="20"
+                                      Margin="15,5,15,0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="left"
+                                      Foreground="DarkGray"/>
+                        </Grid>
+
+                        <TextBlock Text="Check-in date"
+                                   Margin="10,5,0,0"
+                                   HorizontalAlignment="Left"
+                                   FontSize="10"/>
+                        <Grid>
+                                 <TextBox Width="160"
+                                          Height="30"
+                                          Margin="0,5,0,0"
+                                          Background="AntiqueWhite"
+                                          Padding="30,5,0,0"/>
+                            <fa:IconImage Icon="Calendar"
+                                          Height="20"
+                                          Margin="15,5,15,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="left"
+                                          Foreground="DarkGray"/>
+                        </Grid>
+
+                        <TextBlock Text="Check-Out date"
+                                   Margin="10,5,0,0"
+                                   HorizontalAlignment="Left"
+                                   FontSize="10"/>
+                        <Grid>
+                            <TextBox Width="160"
+                                     Height="30"
+                                     Margin="0,5,0,0"
+                                     Background="AntiqueWhite"
+                                     Padding="30,5,0,0"/>
+                            <fa:IconImage Icon="Calendar"
+                                          Height="20"
+                                          Margin="15,5,15,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="left"
+                                          Foreground="DarkGray"/>
+                        </Grid>
+                          <TextBlock Text="property name"
+                                           Margin="10,5,0,0"
+                                           HorizontalAlignment="Left"
+                                           FontSize="10"/>
+                        <Grid>
+                            <TextBox Width="160"
+                                        Height="30"
+                                        Margin="0,5,0,0"
+                                        Background="AntiqueWhite"
+                                        Padding="30,5,0,0"/>
+                            <fa:IconImage Icon="Search"
+                                          Height="20"
+                                          Margin="15,5,15,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="left"
+                                          Foreground="DarkGray"/>
+                        </Grid>
+
+                        <Button Content="Search"
+                                Foreground="{StaticResource color8}"
+                                FontSize="18"
+                                FontWeight="Medium"
+                                Margin="10,25,10,5"
+                                Command="{Binding SearchCommand}"
+                                />
+                    </StackPanel>
+                    
+                </Grid>
             </Border>
 
             <Border Grid.Column="1">
@@ -151,11 +247,14 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Row="0"
-                                    Orientation="Vertical">
+                                    Orientation="Vertical"
+                                    Margin="50,50,0,0">
 
                             <DataGrid ItemsSource="{Binding Bookings}" 
                                       AutoGenerateColumns="True"
-                                      Height="400"/>
+                                      Height="400"
+                                      Background="{StaticResource color5}"
+                                      Foreground="AntiqueWhite"/>
 
                         </StackPanel>
 

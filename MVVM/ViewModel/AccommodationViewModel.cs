@@ -32,6 +32,7 @@ namespace BookingSystem.MVVM.ViewModel
 
         public AccommodationViewModel()
         {
+
             Accommodations = new ObservableCollection<IAccommodation>();
 
             // Create instances of the House and its derived classes
@@ -70,6 +71,7 @@ namespace BookingSystem.MVVM.ViewModel
 
         }
 
+
         private ICommand _bookCommand;
 
         public ICommand BookCommand
@@ -85,10 +87,70 @@ namespace BookingSystem.MVVM.ViewModel
         {
             await Task.Delay(1000);
 
+            // Get the selected property
+            IAccommodation selectedAccommodation = GetSelectedAccommodation();
+
             // Open the StartBookingPage.xaml window
             AddBooking addBooking = new AddBooking();
             addBooking.Show();
+
+            // Populate BookingHistories table
+            PopulateBookingHistories(selectedAccommodation);
         }
 
+        private IAccommodation _selectedAccommodation;
+
+        public IAccommodation SelectedAccommodation
+        {
+            get { return _selectedAccommodation; }
+            set
+            {
+                if (_selectedAccommodation != value)
+                {
+                    _selectedAccommodation = value;
+                    OnPropertyChanged(nameof(SelectedAccommodation));
+                }
+            }
+        }
+
+
+
+        private void PopulateBookingHistories(IAccommodation selectedAccommodation)
+        {
+            using (var dbContext = new BookingDbContext())
+            {
+                BookingHistory bookingHistory = null;  // Declare bookingHistory outside the if block
+
+                // Assume TypeName and RoomType are specific to BookingHistory
+                if (selectedAccommodation is BookingHistory)
+                {
+                    bookingHistory = (BookingHistory)selectedAccommodation;
+                    bookingHistory.TypeName = "YourTypeName"; // Replace with the actual value for TypeName
+                    bookingHistory.RoomType = "YourRoomType"; // Replace with the actual value for RoomType
+                }
+
+                // Check if bookingHistory is not null before accessing its properties
+                if (bookingHistory != null)
+                {
+                    // Set common properties from IAccommodation
+                    bookingHistory.Price = selectedAccommodation.Price;
+                    bookingHistory.Amenities = selectedAccommodation.Amenities;
+
+                    dbContext.BookingHistories.Add(bookingHistory);
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    // Handle the case where selectedAccommodation is not of type BookingHistory
+                    // You might log an error, throw an exception, or handle it as appropriate for your application.
+                }
+            }
+        }
+
+        private IAccommodation GetSelectedAccommodation()
+        {
+            return SelectedAccommodation;
+        }
     }
 }
+
