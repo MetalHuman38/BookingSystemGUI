@@ -60,8 +60,10 @@ namespace BookingSystem.Repositories
                                 BookingId = (int)reader["BookingId"],
                                 GuestName = (string)reader["GuestName"],
                                 AccommodationType = (string)reader["AccommodationType"],
-                                CheckIN = (DateTime)reader["CheckIN"],
-                                CheckOut = (DateTime)reader["CheckOut"],
+                                CheckIN = Convert.IsDBNull(reader["CheckIN"]) ? DateTime.MinValue : (DateTime)reader["CheckIN"],
+                                CheckOut = Convert.IsDBNull(reader["CheckOut"]) ? DateTime.MinValue : (DateTime)reader["CheckOut"],
+                                //CheckIN = (DateTime)reader["CheckIN"],
+                                //CheckOut = (DateTime)reader["CheckOut"],
                                 NumberOfNights = (int)reader["NumberOfNights"],
                                 TotalPrice = (decimal)reader["TotalPrice"]
                                 // Add other properties as needed

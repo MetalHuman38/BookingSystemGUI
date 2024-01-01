@@ -28,10 +28,9 @@
         <viewModel:AccommodationViewModel/>
     </Window.DataContext>
 
-
-    <Border CornerRadius="5"
+    <Border>
+        <Border CornerRadius="5"
             BorderThickness="1">
-
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
@@ -48,10 +47,10 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-            <Border CornerRadius="10,0,0,10"
+                
+                <Border CornerRadius="10,0,0,10"
                     Grid.Column="0">
-                <Border.Background>
+                    <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
                         <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
                         <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="0"/>
@@ -212,8 +211,8 @@
             </Border>
 
         </Grid>
-
+        
     </Border>
-   
-    
+    </Border>
+
 </Window>

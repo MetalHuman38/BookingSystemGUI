@@ -17,23 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Images\house.jpg" />
     <None Remove="Images\illustrated.png" />
     <None Remove="Images\Logof.png" />
-    <None Remove="Images\ole.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\house.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\illustrated.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Logof.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\ole.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -49,11 +41,6 @@
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Fonts\" />
-    <Folder Include="Theme\" />
   </ItemGroup>
 
 </Project>
